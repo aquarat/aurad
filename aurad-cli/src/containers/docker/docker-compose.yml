@@ -2,7 +2,7 @@ version: '3.3'
             
 services:
     parity:
-        image: parity/parity:v2.2.7
+        image: aquarat/parity-armhf:20190117210720
         env_file: aurad_config.env
         volumes:
             - type: bind
@@ -17,7 +17,7 @@ services:
         stop_signal: SIGINT
         stop_grace_period: 20s
     mysql:
-        image: mysql:5.7
+        image: ibex/debian-mysql-server-5.7:latest
         env_file: aurad_config.env
         volumes:
             - type: bind
@@ -28,7 +28,7 @@ services:
         ports:
             - "33006:3306"
     aurad:
-        image: auroradao/aurad:0.1.2
+        image: aquarat/aurad-armhf:0.1.1
         depends_on:
           - "mysql"
         volumes:
